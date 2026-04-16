@@ -2,6 +2,7 @@ def hello():
     print('hi')
 hello()
 
+# 가변 매개변수가 있는 함수 *를 사용 
 def hello1(greeting,*names):
     for name in names:
         print(greeting,name)
