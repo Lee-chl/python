@@ -22,3 +22,25 @@ class Person1:
 
 person2 = Person1('홍길동',20)
 person2.hello()
+
+# 비공개 속성
+class Person2:
+    def __init__(self,name,age):
+        self.name = name
+        if 0 <= age <= 20 : self.__age = age ## __ 는 비공개 속성
+        else: self.__age=0
+
+    def inc_age(self):
+        self.__age += 1
+
+    def info(self):
+        print(self.__age)
+        
+    def hello(self):
+        print('Hello {}'.format(self.name))
+        print('당신은 {}살입니다.'.format(self.__age))
+
+person3 = Person2('홍길동',20)
+person3.hello()
+person3.inc_age()
+person3.info()
