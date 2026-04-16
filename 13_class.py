@@ -44,3 +44,61 @@ person3 = Person2('홍길동',20)
 person3.hello()
 person3.inc_age()
 person3.info()
+
+# 정적 메서드 
+class Math:
+    @staticmethod
+    def add(a,b):
+        return a+b
+    
+    @staticmethod
+    def sub(a,b):
+        return a- b
+
+print(Math.add(1,2))
+print(Math.sub(3,1))
+
+
+class Vehicle:
+    def __init__(self,speed):
+        self.speed = speed
+    
+    def speed_up(self):
+        self.speed += 10
+    
+    def speed_dn(self):
+        self.speed -= 10
+
+class Car(Vehicle):
+    def __init__(self,speed,wheels,seats):
+        Vehicle.__init__(self,speed)
+        self.wheels = wheels
+        self.seats = seats
+    
+    def info(self):
+        print(self.speed,self.wheels,self.seats)
+
+car = Car(100,4,4)
+car.speed_up()
+car.info()
+
+# 상속 실습 (퀴즈)
+class Truck(Car):
+    def __init__(self,speed,wheels,seats,loadage):
+        Car.__init__(self,speed,wheels,seats)
+        self.loadage = loadage
+    
+    def load(self):
+        return str(self.loadage) +' load'
+    
+    def unload(self):
+        self.loadage = 0
+        return 'unload'
+    
+    def info(self):
+        print(self.speed,self.wheels,self.seats,self.loadage)
+    
+truck = Truck(100,4,4,10)
+print(truck.load());
+truck.info()
+print(truck.unload())
